@@ -90,7 +90,7 @@ You can open a `.theiamap` file in any text editor and understand it. Try that w
 ## Documentation
 
 - [Full Specification](SPEC.md) — Technical details, format reference
-- [Examples](examples/) — Sample maps (apartment, office, etc.)
+- [Examples](https://github.com/frank-and-theia/theiamap/examples/) — Sample maps (apartment, office, etc.)
 
 ---
 
