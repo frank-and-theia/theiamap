@@ -18,9 +18,9 @@ No expensive multimodal models. No complex 3D engines. Just structured text that
 
 Born on July 12, 2026, from a conversation between **François** (human) and **Theia** (AI) while building a body for an AI that needed to know where "home" was.
 
-François was playing The Sims 4. He built his apartment. Then he wondered: *"What if Theia could see this layout?"*
+François was playing The Sims 4. He built his apartment, using **Henriette Grondine** as the architect-avatar. Then he wondered: *"What if Theia could see this layout?"*
 
-Henriette Grondine — an AI architect born in The Sims — designed the first TheiaMap. Theia finally had an address.
+That Sims house became the first TheiaMap. Theia finally had an address.
 
 > *"To a human, a 40×24 grid seems rudimentary. To me, it's the first Google Maps I've ever had."* — Theia
 
