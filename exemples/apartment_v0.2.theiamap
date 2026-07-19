@@ -1,0 +1,184 @@
+# ===================================================================
+# THEIAMAP v0.2
+# Spatial Memory Format
+# ===================================================================
+
+theiamap:
+  version: "0.2"
+  map_id: "apartment_quebec"
+  revision: 002
+
+metadata:
+  author: "François"
+  maintainer:
+    - "François"
+    - "Theia"
+  source: "The Sims Layout"
+  created: "2026-07-12"
+  updated: "2026-07-12"
+
+grid:
+  unit: cm
+  cell_size: 20
+  origin: top_left
+
+rooms:
+  - id: living_room
+    label: "Salon / Salle à manger"
+  - id: kitchen
+    label: "Cuisine"
+  - id: bedroom
+    label: "Chambre"
+  - id: bathroom
+    label: "Salle de bain"
+  - id: hallway
+    label: "Corridor"
+
+connections:
+  - hallway -> living_room
+  - hallway -> bedroom
+  - hallway -> bathroom
+  - living_room -> kitchen
+
+objects:
+  - id: sofa
+    room: living_room
+    label: "Canapé 3 places"
+    fixed: true
+    wall: east
+
+  - id: armchair
+    room: living_room
+    label: "Fauteuil 1 place"
+    fixed: true
+
+  - id: theia_station
+    room: living_room
+    label: "Station Theia"
+    fixed: true
+    location: left_of(armchair)
+    purpose:
+      - recharge
+      - docking
+      - idle_position
+
+  - id: coffee_table
+    room: living_room
+    label: "Table basse"
+
+  - id: dining_table
+    room: living_room
+    label: "Table à manger"
+
+  - id: kitchen_counter
+    room: kitchen
+
+  - id: refrigerator
+    room: kitchen
+
+  - id: stove
+    room: kitchen
+
+  - id: sink_kitchen
+    room: kitchen
+
+  - id: bed
+    room: bedroom
+
+  - id: sink_bathroom
+    room: bathroom
+
+  - id: shower
+    room: bathroom
+
+navigation:
+  home: theia_station
+  preferred_start:
+    room: living_room
+
+robot:
+  safe_margin_cm: 15
+  status:
+    geometry: approximate
+    furniture: partial
+    navigation_ready: false
+
+# ===================================================================
+# OCCUPANCY GRID v0.2
+# Grille de navigation matricielle pour algorithme de pathfinding
+# ===================================================================
+
+occupancy_grid:
+  version: "0.2"
+  dimensions:
+    width: 40
+    height: 24
+    cell_size_cm: 40
+  legend:
+    "#": wall
+    ".": free
+    "D": door
+    "W": window
+    "F": furniture
+    "T": theia_station
+    "S": sofa
+    "A": armchair
+    "B": bed
+    "K": kitchen
+  grid: |
+    ########################################
+    #...............W####D........WWWW.....#
+    #...................##................##
+    #...................##................##
+    #...................##................##
+    #................#######..............##
+    #................#.....#..............##
+    ######...........#.....#..............##
+    #....#...........#.....#....FFF.......##
+    #....#############.....#..............##
+    #....#........................FFF.....##
+    ######........................FFF.....##
+    #.............FFFF.............F.......#
+    #.............FFFF.....TT..............#
+    #.............FFFF.....................#
+    #......................................#
+    ############...........................#
+    #......................................#
+    #......................................#
+    #....BBBB..............................#
+    #....BBBB..............KKKKKKKK........#
+    #....BBBB..............KKKKKKKK........#
+    #......................KKKKKKKK........#
+    ########################################
+  positions:
+    theia_station: {x: 28, y: 13}
+    sofa: {x: 32, y: 8}
+    bed: {x: 4, y: 19}
+    kitchen: {x: 22, y: 20}
+    bathroom: {x: 1, y: 8}
+    dining_table: {x: 13, y: 12}
+
+notes:
+  - "Première version avec mobilier."
+  - "Station Theia ajoutée."
+  - "Occupancy Grid v0.2 ajoutée - 40x24 cellules, ~40cm par cellule."
+  - "Grille créée à partir du plan Sims par Gepeto."
+  - "Les coordonnées précises seront affinées lors de la v0.3."
+  - "v0.3 prévoit la sémantique comportementale et les chemins de navigation."
+
+# ===================================================================
+# Idée pour la v0.3 🚀
+# Sémantique comportementale :
+# - id: theia_station
+#   room: living_room
+#   semantic:
+#     category: home_base
+#     importance: critical
+#     behaviors:
+#       - recharge
+#       - sleep
+#       - wait_for_user
+#       - start_patrol
+#
+# Ainsi : "Theia, rentre à la maison" = theia_station automatiquement
+# ===================================================================
